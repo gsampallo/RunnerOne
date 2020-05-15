@@ -1,8 +1,8 @@
 package gsampallo;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Toolkit;
+
+import java.awt.*;
+
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -14,9 +14,11 @@ public class RunnerOne extends JFrame implements ActionListener {
     public static int FRAME_WIDTH = 640;
     public static int FRAME_HEIGHT = 480;
 
-    public final int DELAY = 10;
+    public final int DELAY = 50;
 
     private Background background;
+
+    private Player player;
 
     private Timer timer;
 
@@ -35,6 +37,12 @@ public class RunnerOne extends JFrame implements ActionListener {
          */
         background = new Background("image/bgd1.png");
 
+
+        /*
+         * Player
+         */
+        player = new Player(Player.MASK_DUDE,new Point(50,410));
+
         //Timer
         timer = new Timer(DELAY, this);
         timer.start();
@@ -45,10 +53,20 @@ public class RunnerOne extends JFrame implements ActionListener {
 
     public void paint(Graphics g) {
         g.drawImage(background.getImageBackground(),0,0,null);
+
+        /*
+         * Player
+         */
+        g.drawImage(player.getImagePlayer(),player.getX(),player.getY(),null);
     }
 
     public void updateGame() {
         background.updateBackground();
+
+        /*
+         * Player
+         */
+        player.updatePlayer();
     }
 
     public static void main(String[] args) throws Exception {
