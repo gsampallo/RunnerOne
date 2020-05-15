@@ -18,10 +18,12 @@ public class Player {
 
     public static int STATE_IDLE = 0;
     public static int STATE_RUN = 1;
+    public static int STATE_JUMP = 2;
+    public static int STATE_FALL = 3;
 
     private Point position;
     private int type;
-    private int state = STATE_RUN;
+    private int state = STATE_IDLE;
 
     private int width = 32;
     private int height = 32;
@@ -71,7 +73,8 @@ public class Player {
     }
 
     private int imageReference = 0;
-    
+    private int jumpDistance = height;
+
     public void updatePlayer() {
         if(state == STATE_IDLE) {
 
@@ -80,6 +83,24 @@ public class Player {
             } else {
                 imageReference = 0;
             }
+
+
+        } else if(state == STATE_JUMP) {
+
+            if(position.y > (baseLine-jumpDistance)) {
+                position.y = position.y - 2;
+            } else {
+                fall();
+            }
+
+        } else if(state == STATE_FALL) {
+
+            if(position.y < baseLine) {
+                position.y = position.y + 2;
+            } else {
+                state = previousState;
+            }
+
         } else if(state == STATE_RUN) {
             if(imageReference < (imageRun.getWidth()/width)-1) {
                 imageReference++;
@@ -94,6 +115,10 @@ public class Player {
         int x = imageReference*width;
         if(state == STATE_RUN) {
             return imageRun.getSubimage(x,0,width,height);
+        } else if(state == STATE_JUMP) {   
+            return imageJump;
+        } else if(state == STATE_FALL) {   
+            return imageFall;            
         } else {
             return imageIdle.getSubimage(x,0,width,height);
         }
@@ -106,6 +131,39 @@ public class Player {
 
     public int getY() {
         return position.y;
+    }
+
+
+    public void idle() {
+        if(state == Player.STATE_RUN) {
+            state = STATE_IDLE;
+        }
+    }
+
+    public void run() {
+        if(state == Player.STATE_IDLE) {
+            state = STATE_RUN;
+        }
+    }
+
+
+    private int previousState = 0;
+    private int baseLine;
+
+    public void jump() {
+        if((state == Player.STATE_RUN) || (state == Player.STATE_IDLE)) {
+            previousState = state;
+            state = Player.STATE_JUMP;
+            baseLine = position.y;
+        }
+    }
+
+    public void fall() {
+        state = Player.STATE_FALL;
+    }
+
+    public int getState() {
+        return state;
     }
 
 }

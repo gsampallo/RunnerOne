@@ -1,12 +1,16 @@
 package gsampallo;
 
 
-import java.awt.*;
-
-
 import javax.swing.JFrame;
+import javax.imageio.ImageIO;
+import java.awt.image.*;
+import java.awt.*;
+import java.io.File;
 import javax.swing.Timer;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class RunnerOne extends JFrame implements ActionListener {
@@ -22,6 +26,8 @@ public class RunnerOne extends JFrame implements ActionListener {
 
     private Timer timer;
 
+    private boolean pause = false;
+
     public RunnerOne() {
         setTitle("RunnerOne");
 
@@ -31,6 +37,8 @@ public class RunnerOne extends JFrame implements ActionListener {
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width,dim.height/2-this.getSize().height/2);
+
+        addKeyListener(new GameKeys());
 
         /*
          * Background
@@ -61,7 +69,13 @@ public class RunnerOne extends JFrame implements ActionListener {
     }
 
     public void updateGame() {
-        background.updateBackground();
+        if(pause) {
+            return;
+        }
+
+        if(player.getState() != Player.STATE_IDLE) {
+            background.updateBackground();
+        }
 
         /*
          * Player
@@ -76,8 +90,47 @@ public class RunnerOne extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
 
+        
         updateGame();
+
         repaint();
 
+    }
+
+
+    public class GameKeys extends KeyAdapter {
+		public void keyPressed(KeyEvent e) {
+            
+			if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                System.exit(0);
+            } else if(e.getKeyCode() ==  KeyEvent.VK_P) {
+                pause = !pause;
+
+            /*
+             * RIGHT
+             */
+            } else if(e.getKeyCode() ==  KeyEvent.VK_RIGHT) {
+                player.run();
+            } else if(e.getKeyCode() ==  KeyEvent.VK_D) {
+                player.run();
+            
+
+            /*
+             * JUMP
+             */
+            } else if(e.getKeyCode() ==  KeyEvent.VK_UP) {
+                player.jump();
+            }
+            
+        }
+
+
+        public void keyReleased(KeyEvent e) {
+            if(e.getKeyCode() ==  KeyEvent.VK_RIGHT) {
+                player.idle();
+            } else if(e.getKeyCode() ==  KeyEvent.VK_D) {
+                player.run();                
+            }
+        }
     }
 }
