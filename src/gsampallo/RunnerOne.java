@@ -6,6 +6,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.*;
 import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,6 +26,8 @@ public class RunnerOne extends JFrame implements ActionListener {
     private Background background;
 
     private Player player;
+
+    private ArrayList<Fruit> listFruit;
 
     private Timer timer;
 
@@ -45,6 +50,14 @@ public class RunnerOne extends JFrame implements ActionListener {
          */
         background = new Background("image/bgd1.png");
 
+        /*
+         * Fruit
+         */
+        Fruit fruit = new Fruit(Fruit.APPLE,new Point(150,410));
+
+        listFruit = new ArrayList<Fruit>();
+        listFruit.add(fruit);
+
 
         /*
          * Player
@@ -62,10 +75,34 @@ public class RunnerOne extends JFrame implements ActionListener {
     public void paint(Graphics g) {
         g.drawImage(background.getImageBackground(),0,0,null);
 
+
+        /*
+         * Fruit
+         */
+        if(!listFruit.isEmpty()) {
+            Iterator it = listFruit.iterator();
+            while(it.hasNext()) {
+                Fruit fruit = (Fruit)it.next();
+                g.drawImage(fruit.getImageFruit(),fruit.getX(),fruit.getY(),null);
+            }
+        }        
+
         /*
          * Player
          */
         g.drawImage(player.getImagePlayer(),player.getX(),player.getY(),null);
+    }
+
+
+
+    private boolean isHorizontalColision(Element elA,Element elB,int tolerance) {
+        boolean isColision = false;
+
+        if((elA.getX()+elA.getWidth()+tolerance) > elB.getX()) {
+            isColision = true;
+        }
+
+        return isColision;
     }
 
     public void updateGame() {
@@ -76,6 +113,33 @@ public class RunnerOne extends JFrame implements ActionListener {
         if(player.getState() != Player.STATE_IDLE) {
             background.updateBackground();
         }
+
+
+        boolean move = (player.getState() != Player.STATE_IDLE);
+        /*
+         * Fruit
+         */
+        if(!listFruit.isEmpty()) {
+            Iterator it = listFruit.iterator();
+            while(it.hasNext()) {
+                Fruit fruit = (Fruit)it.next();
+                
+
+                if(isHorizontalColision(player,fruit,-12)) {
+                    if(!fruit.isCollected()) {
+                        fruit.setCollected(true);
+                    }
+                }
+                
+                fruit.updateFruit(move);
+
+                if(!fruit.isVisible()) {
+                    it.remove();
+                }
+
+            }
+        }
+
 
         /*
          * Player

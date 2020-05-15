@@ -8,7 +8,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class Player {
+public class Player implements Element {
 
 
     public static int MASK_DUDE = 0;
@@ -133,6 +133,13 @@ public class Player {
         return position.y;
     }
 
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
 
     public void idle() {
         if(state == Player.STATE_RUN) {
