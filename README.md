@@ -1,14 +1,21 @@
-## Getting Started
+# RunnerOne
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Un juego de plataformas en Java.
 
-## Folder Structure
+![RunnerOne](http://www.gsampallo.com/blog/wp-content/uploads/2020/05/platform-game.jpg)
 
-The workspace contains two folders by default, where:
+Aquí van a encontrar una serie de paso a paso con el desarrollo desde cero hasta completar un sencillo juego de plataformas. La idea es ver que tan lejos podemos llegar sin utilizar herramientas o librerías extras.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Requisitos
 
-## Dependency Management
+Solo es necesario tener instalado Java y un IDE, en la serie de videos utilice VS Code.
 
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+## Indice
+
+El proyecto esta separado en partes, donde cada video tiene su correspondiente articulo del blog, y su rama en el repositorio.
+
+#### Entorno de desarrollo
+Desde aqui partimos, pueden enconrar en la rama Home.
+Articulo del [blog](http://www.gsampallo.com/blog/?p=700)
+
+[![video1](https://img.youtube.com/vi/DASRQftG3k8/0.jpg)](https://youtu.be/DASRQftG3k8)
