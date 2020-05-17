@@ -26,3 +26,24 @@ Definimos el fondo del juego y como va a trabajar.
 Articulo del [blog](http://www.gsampallo.com/blog/?p=720)
 
 [![video1](https://img.youtube.com/vi/kP3E5sGkuYE/0.jpg)](https://youtu.be/kP3E5sGkuYE)
+
+#### Player
+
+Integramos nuestro personaje al juego.
+Articulo del [blog](http://www.gsampallo.com/blog/?p=743)
+
+[![video1](https://img.youtube.com/vi/HuLxfCf34ic/0.jpg)](https://youtu.be/HuLxfCf34ic)
+
+#### Acciones
+
+Establecemos cuales van a ser las respuestas del personaje ante los eventos de teclado
+Articulo del [blog](http://www.gsampallo.com/blog/?p=753)
+
+[![video1](https://img.youtube.com/vi/6p7GRstzDbk/0.jpg)](https://youtu.be/6p7GRstzDbk)
+
+#### Frutas
+
+Debemos ir completando el juego con otros elementos ademas de nuestro personaje; para ello incorporaremos las frutas, que el personaje podrá ir recolectando para sumar puntos.
+Articulo del [blog](http://www.gsampallo.com/blog/?p=766)
+
+[![video1](https://img.youtube.com/vi/c9omnO3uxAE/0.jpg)](https://youtu.be/c9omnO3uxAE)
