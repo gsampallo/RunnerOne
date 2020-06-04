@@ -47,3 +47,11 @@ Debemos ir completando el juego con otros elementos ademas de nuestro personaje;
 Articulo del [blog](http://www.gsampallo.com/blog/?p=766)
 
 [![video1](https://img.youtube.com/vi/c9omnO3uxAE/0.jpg)](https://youtu.be/c9omnO3uxAE)
+
+#### Cajas
+
+Necesitamos comenzar a definir algunos obstáculos en el camino de nuestro personaje; utilizaremos algunas cajas para ayudar a crear también los mapas de los niveles.
+Articulo del [blog](http://www.gsampallo.com/blog/2020/05/23/juego-de-plataformas-en-java-6-cajas/)
+
+[![video1](https://img.youtube.com/vi/9TgTDAPDiFw/0.jpg)](https://youtu.be/9TgTDAPDiFw)
+
