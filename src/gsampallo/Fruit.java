@@ -95,7 +95,7 @@ public class Fruit implements Element {
     }
 
 
-    public BufferedImage getImageFruit() {
+    public BufferedImage getImage() {
         int x = imageNumber*width;
         if(collected) {
             return imageCollected.getSubimage(x, 0, width,height);

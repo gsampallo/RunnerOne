@@ -111,7 +111,7 @@ public class Player implements Element {
         }
     }
 
-    public BufferedImage getImagePlayer() {
+    public BufferedImage getImage() {
         int x = imageReference*width;
         if(state == STATE_RUN) {
             return imageRun.getSubimage(x,0,width,height);

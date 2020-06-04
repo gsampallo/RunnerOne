@@ -71,7 +71,7 @@ public class Box implements Element {
     }
 
 
-    public BufferedImage getBoxImage() {
+    public BufferedImage getImage() {
         if(isBreak) {
             int x = numberImageBreak*width;
             return imageBoxBreak.getSubimage(x, 0, width,height);

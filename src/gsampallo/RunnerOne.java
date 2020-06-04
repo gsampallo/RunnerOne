@@ -86,6 +86,18 @@ public class RunnerOne extends JFrame implements ActionListener {
 
     }
 
+    private void drawList(ArrayList itemList,Graphics g) {
+
+        if(!itemList.isEmpty()) {
+            Iterator it = itemList.iterator();
+            while(it.hasNext()) {
+                Element el = (Element)it.next();
+                g.drawImage(el.getImage(),el.getX(),el.getY(),null);
+            }
+        }
+
+    }
+
     public void paint(Graphics g) {
         g.drawImage(background.getImageBackground(),0,0,null);
 
@@ -93,43 +105,23 @@ public class RunnerOne extends JFrame implements ActionListener {
         /*
          * Fruit
          */
-        if(!listFruit.isEmpty()) {
-            Iterator it = listFruit.iterator();
-            while(it.hasNext()) {
-                Fruit fruit = (Fruit)it.next();
-                g.drawImage(fruit.getImageFruit(),fruit.getX(),fruit.getY(),null);
-            }
-        }        
+        drawList(listFruit,g);        
 
         /*
          * Box
          */
-        if(!listBox.isEmpty()) {
-            Iterator it = listBox.iterator();
-            while(it.hasNext()) {
-                Box box = (Box)it.next();
-                g.drawImage(box.getBoxImage(),box.getX(),box.getY(),null);
-            }
-        }        
+        drawList(listBox, g);        
 
 
         /*
          * WEAPON
          */
-        if(!listWeapon.isEmpty()) {
-            Iterator it = listWeapon.iterator();
-            while(it.hasNext()) {
-                Weapon weapon = (Weapon)it.next();
-                if(weapon.isVisible()) {
-                    g.drawImage(weapon.getImage(),weapon.getX(),weapon.getY(),null);
-                }
-            }
-        }         
+        drawList(listWeapon, g);         
 
         /*
          * Player
          */
-        g.drawImage(player.getImagePlayer(),player.getX(),player.getY(),null);
+        g.drawImage(player.getImage(),player.getX(),player.getY(),null);
     }
 
 
