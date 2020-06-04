@@ -28,7 +28,6 @@ public class RunnerOne extends JFrame implements ActionListener {
     private Player player;
 
     private ArrayList<Fruit> listFruit;
-    private ArrayList<Box> listBox;
 
     private Timer timer;
 
@@ -61,19 +60,6 @@ public class RunnerOne extends JFrame implements ActionListener {
 
 
         /*
-         * BOX
-         */
-        listBox = new ArrayList<Box>();
-
-        Box box1 = new Box(Box.BOX1,new Point(180,410));
-        Box box2 = new Box(Box.BOX2,new Point(210,410));
-        Box box3 = new Box(Box.BOX3,new Point(240,410));
-
-        listBox.add(box1);
-        listBox.add(box2);
-        listBox.add(box3);
-
-        /*
          * Player
          */
         player = new Player(Player.MASK_DUDE,new Point(50,410));
@@ -98,17 +84,6 @@ public class RunnerOne extends JFrame implements ActionListener {
             while(it.hasNext()) {
                 Fruit fruit = (Fruit)it.next();
                 g.drawImage(fruit.getImageFruit(),fruit.getX(),fruit.getY(),null);
-            }
-        }   
-
-        /*
-         * Box
-         */
-        if(!listBox.isEmpty()) {
-            Iterator it = listBox.iterator();
-            while(it.hasNext()) {
-                Box box = (Box)it.next();
-                g.drawImage(box.getBoxImage(),box.getX(),box.getY(),null);
             }
         }        
 
@@ -141,7 +116,6 @@ public class RunnerOne extends JFrame implements ActionListener {
 
 
         boolean move = (player.getState() != Player.STATE_IDLE);
-
         /*
          * Fruit
          */
@@ -164,23 +138,6 @@ public class RunnerOne extends JFrame implements ActionListener {
                 }
 
             }
-        }
-
-
-        if(!listBox.isEmpty()) {
-
-            Iterator it = listBox.iterator();
-            while(it.hasNext()) {
-                Box box = (Box)it.next();
-
-                box.updateBox(move);
-
-                if(!box.isVisible()) {
-                    it.remove();
-                }
-            }
-
-
         }
 
 
