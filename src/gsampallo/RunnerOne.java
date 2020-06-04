@@ -28,6 +28,7 @@ public class RunnerOne extends JFrame implements ActionListener {
     private Player player;
 
     private ArrayList<Fruit> listFruit;
+    private ArrayList<Box> listBox;
 
     private Timer timer;
 
@@ -58,6 +59,13 @@ public class RunnerOne extends JFrame implements ActionListener {
         listFruit = new ArrayList<Fruit>();
         listFruit.add(fruit);
 
+        /*
+         * BOX
+         */
+        Box box = new Box(Box.BOX1,new Point(200,410));
+
+        listBox = new ArrayList<Box>();
+        listBox.add(box);
 
         /*
          * Player
@@ -84,6 +92,17 @@ public class RunnerOne extends JFrame implements ActionListener {
             while(it.hasNext()) {
                 Fruit fruit = (Fruit)it.next();
                 g.drawImage(fruit.getImageFruit(),fruit.getX(),fruit.getY(),null);
+            }
+        }        
+
+        /*
+         * Box
+         */
+        if(!listBox.isEmpty()) {
+            Iterator it = listBox.iterator();
+            while(it.hasNext()) {
+                Box box = (Box)it.next();
+                g.drawImage(box.getBoxImage(),box.getX(),box.getY(),null);
             }
         }        
 
@@ -140,6 +159,17 @@ public class RunnerOne extends JFrame implements ActionListener {
             }
         }
 
+
+        /*
+         * Box
+         */
+        if(!listBox.isEmpty()) {
+            Iterator it = listBox.iterator();
+            while(it.hasNext()) {
+                Box box = (Box)it.next();
+                box.updateBox(move);
+            }
+        }
 
         /*
          * Player
