@@ -26,12 +26,19 @@ public class Fruit implements Element {
     private boolean visible = true;
     private boolean collected = false;
 
+    private int creditValue = 1;
 
     public Fruit(int type, Point initialPoint) {
         fruitNumber = type;
         position = initialPoint;
 
+        this.creditValue = type + 1;
+
         loadImage();
+    }
+
+    public int getCreditValue() {
+        return creditValue;
     }
 
     public boolean isVisible() {

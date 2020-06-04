@@ -31,6 +31,12 @@ public class RunnerOne extends JFrame implements ActionListener {
     private ArrayList<Box> listBox;
     private ArrayList<Weapon> listWeapon;
 
+    private Credits showCredits;
+    private boolean winCredits = false;
+    private int numberWinCredits = 0;
+    private int credits = 0;
+    private int showCreditNumber = 0;
+
     private Timer timer;
 
     private boolean pause = false;
@@ -55,18 +61,22 @@ public class RunnerOne extends JFrame implements ActionListener {
         /*
          * Fruit
          */
-        Fruit fruit = new Fruit(Fruit.APPLE,new Point(150,410));
+        Fruit fruit = new Fruit(Fruit.APPLE,new Point(250,410));
+        Fruit fruit1 = new Fruit(Fruit.APPLE,new Point(280,410));
+        Fruit fruit2 = new Fruit(Fruit.APPLE,new Point(310,410));
 
         listFruit = new ArrayList<Fruit>();
         listFruit.add(fruit);
+        listFruit.add(fruit1);
+        listFruit.add(fruit2);
 
         /*
          * BOX
          */
-        Box box = new Box(Box.BOX1,new Point(200,410));
+        //Box box = new Box(Box.BOX1,new Point(200,410));
 
         listBox = new ArrayList<Box>();
-        listBox.add(box);
+        //listBox.add(box);
 
         /*
          * Weapon
@@ -77,6 +87,11 @@ public class RunnerOne extends JFrame implements ActionListener {
          * Player
          */
         player = new Player(Player.MASK_DUDE,new Point(50,410));
+
+        /*
+         * Credits
+         */
+        showCredits = new Credits();
 
         //Timer
         timer = new Timer(DELAY, this);
@@ -101,6 +116,10 @@ public class RunnerOne extends JFrame implements ActionListener {
     public void paint(Graphics g) {
         g.drawImage(background.getImageBackground(),0,0,null);
 
+        /*
+         * Credits
+         */
+        g.drawImage(showCredits.getScore(),20,50,null);
 
         /*
          * Fruit
@@ -122,6 +141,24 @@ public class RunnerOne extends JFrame implements ActionListener {
          * Player
          */
         g.drawImage(player.getImage(),player.getX(),player.getY(),null);
+
+        /*
+         * Win Credits
+         */
+        if(winCredits) {
+
+            if(showCreditNumber < 3) {
+                
+                g.drawImage(showCredits.getPlusOne(),player.getX()+player.getWidth(),player.getY()-3,null);
+                g.drawImage(showCredits.getCreditNumber(numberWinCredits),player.getX()+player.getWidth()+showCredits.getWidth(),player.getY()-3,null);
+
+                showCreditNumber++;
+            } else {
+                winCredits = false;
+                showCreditNumber = 0;
+            }
+
+        }
     }
 
 
@@ -135,6 +172,10 @@ public class RunnerOne extends JFrame implements ActionListener {
 
         return isColision;
     }
+
+
+    
+
 
     public void updateGame() {
         if(pause) {
@@ -158,7 +199,12 @@ public class RunnerOne extends JFrame implements ActionListener {
 
                 if(isHorizontalColision(player,fruit,-12)) {
                     if(!fruit.isCollected()) {
+                        winCredits = true;
+                        numberWinCredits = fruit.getCreditValue();
+                        credits = credits + fruit.getCreditValue();
+                        showCredits.updateScore(credits);
                         fruit.setCollected(true);
+
                     }
                 }
                 
