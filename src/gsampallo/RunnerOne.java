@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import gsampallo.traps.*;
 
 public class RunnerOne extends JFrame implements ActionListener {
 
@@ -30,6 +31,7 @@ public class RunnerOne extends JFrame implements ActionListener {
     private ArrayList<Fruit> listFruit;
     private ArrayList<Box> listBox;
     private ArrayList<Weapon> listWeapon;
+    private ArrayList<Trap> listTrap;
 
     private Credits showCredits;
     private boolean winCredits = false;
@@ -66,9 +68,9 @@ public class RunnerOne extends JFrame implements ActionListener {
         Fruit fruit2 = new Fruit(Fruit.APPLE,new Point(310,410));
 
         listFruit = new ArrayList<Fruit>();
-        listFruit.add(fruit);
-        listFruit.add(fruit1);
-        listFruit.add(fruit2);
+        // listFruit.add(fruit);
+        // listFruit.add(fruit1);
+        // listFruit.add(fruit2);
 
         /*
          * BOX
@@ -77,6 +79,18 @@ public class RunnerOne extends JFrame implements ActionListener {
 
         listBox = new ArrayList<Box>();
         //listBox.add(box);
+
+        /*
+         * TRAP
+         */
+        listTrap = new ArrayList<Trap>();
+
+        Fire fire = new Fire(new Point(200,410));
+        listTrap.add(fire);
+
+        Fire fire1 = new Fire(new Point(220,410));
+        fire1.setPeriodFireOn(18);
+        listTrap.add(fire1);
 
         /*
          * Weapon
@@ -131,6 +145,10 @@ public class RunnerOne extends JFrame implements ActionListener {
          */
         drawList(listBox, g);        
 
+        /*
+         * TRAPS
+         */
+        drawList(listTrap, g);   
 
         /*
          * WEAPON
@@ -227,6 +245,20 @@ public class RunnerOne extends JFrame implements ActionListener {
                 Box box = (Box)it.next();
                 box.updateBox(move);
                 if(!box.isVisible()) {
+                    it.remove();
+                }
+            }
+        }
+
+        /*
+         * Traps
+         */
+        if(!listTrap.isEmpty()) {
+            Iterator it = listTrap.iterator();
+            while(it.hasNext()) {
+                Trap trap = (Trap)it.next();
+                trap.updateTrap(move);
+                if(!trap.isVisible()) {
                     it.remove();
                 }
             }
