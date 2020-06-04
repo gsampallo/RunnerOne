@@ -29,6 +29,7 @@ public class RunnerOne extends JFrame implements ActionListener {
 
     private ArrayList<Fruit> listFruit;
     private ArrayList<Box> listBox;
+    private ArrayList<Weapon> listWeapon;
 
     private Timer timer;
 
@@ -68,6 +69,11 @@ public class RunnerOne extends JFrame implements ActionListener {
         listBox.add(box);
 
         /*
+         * Weapon
+         */
+        listWeapon = new ArrayList<Weapon>();
+
+        /*
          * Player
          */
         player = new Player(Player.MASK_DUDE,new Point(50,410));
@@ -105,6 +111,20 @@ public class RunnerOne extends JFrame implements ActionListener {
                 g.drawImage(box.getBoxImage(),box.getX(),box.getY(),null);
             }
         }        
+
+
+        /*
+         * WEAPON
+         */
+        if(!listWeapon.isEmpty()) {
+            Iterator it = listWeapon.iterator();
+            while(it.hasNext()) {
+                Weapon weapon = (Weapon)it.next();
+                if(weapon.isVisible()) {
+                    g.drawImage(weapon.getImage(),weapon.getX(),weapon.getY(),null);
+                }
+            }
+        }         
 
         /*
          * Player
@@ -168,6 +188,39 @@ public class RunnerOne extends JFrame implements ActionListener {
             while(it.hasNext()) {
                 Box box = (Box)it.next();
                 box.updateBox(move);
+                if(!box.isVisible()) {
+                    it.remove();
+                }
+            }
+        }
+
+        /*
+         * WEAPON
+         */
+        if(!listWeapon.isEmpty()) {
+            Iterator it = listWeapon.iterator();
+            while(it.hasNext()) {
+                Weapon weapon = (Weapon)it.next();
+
+                    if(!listBox.isEmpty()) {
+                        Iterator it1 = listBox.iterator();
+                        while(it1.hasNext()) {
+                            Box box = (Box)it1.next();
+                            
+                            if(isHorizontalColision(weapon,box,0)) {
+                                box.setBreak();
+                                weapon.setVisible(false);
+
+                                break;
+                            }
+                        }
+                    }                
+
+                weapon.updateWeapon(move);
+
+                if(!weapon.isVisible()) {
+                    it.remove();
+                }
             }
         }
 
@@ -192,6 +245,11 @@ public class RunnerOne extends JFrame implements ActionListener {
     }
 
 
+    public void shootWeapon() {
+        Weapon weapon = new Weapon(new Point(player.getX(),player.getY()+6));
+        listWeapon.add(weapon);
+    }
+
     public class GameKeys extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
             
@@ -214,6 +272,12 @@ public class RunnerOne extends JFrame implements ActionListener {
              */
             } else if(e.getKeyCode() ==  KeyEvent.VK_UP) {
                 player.jump();
+
+            /*
+             * FIRE
+             */
+            } else if(e.getKeyCode() ==  KeyEvent.VK_SPACE) {
+                shootWeapon();
             }
             
         }

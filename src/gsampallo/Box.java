@@ -57,7 +57,7 @@ public class Box implements Element {
 
     public void updateBox(boolean move) {
         if(isBreak) {
-            if(numberImageBreak <= (imageBoxBreak.getWidth()/width)) {
+            if(numberImageBreak < (imageBoxBreak.getWidth()/width)-1) {
                 numberImageBreak++;
             } else {
                 visible = false;
