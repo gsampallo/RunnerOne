@@ -53,5 +53,15 @@ Articulo del [blog](http://www.gsampallo.com/blog/?p=766)
 Necesitamos comenzar a definir algunos obstáculos en el camino de nuestro personaje; utilizaremos algunas cajas para ayudar a crear también los mapas de los niveles.
 Articulo del [blog](http://www.gsampallo.com/blog/2020/05/23/juego-de-plataformas-en-java-6-cajas/)
 
-[![video1](https://img.youtube.com/vi/9TgTDAPDiFw/0.jpg)](https://youtu.be/9TgTDAPDiFw)
+[![video1](https://img.youtube.com/vi/h0fAb9xxSzM/0.jpg)](https://youtu.be/h0fAb9xxSzM)
+
+#### Armas
+
+Nuestro juego ya tiene un fondo, un personaje (que podemos cambiar), frutas para sumar puntos y cajas.A continuación incorporaremos una nueva acción a nuestro héroe, podrá disparar afiladas sierras para abrirse paso.
+
+[![video1](http://www.gsampallo.com/blog/wp-content/uploads/2020/05/player_w2.gif)]
+
+Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataformas-en-java-7-destruir-las-cajas/)
+
+[![video1](https://img.youtube.com/vi/OWklYWcxeEc/0.jpg)](https://youtu.be/OWklYWcxeEc)
 
