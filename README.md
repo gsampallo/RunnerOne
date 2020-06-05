@@ -59,7 +59,7 @@ Articulo del [blog](http://www.gsampallo.com/blog/2020/05/23/juego-de-plataforma
 
 Nuestro juego ya tiene un fondo, un personaje (que podemos cambiar), frutas para sumar puntos y cajas.A continuación incorporaremos una nueva acción a nuestro héroe, podrá disparar afiladas sierras para abrirse paso.
 
-[![video1](http://www.gsampallo.com/blog/wp-content/uploads/2020/05/player_w2.gif)]
+![video1](http://www.gsampallo.com/blog/wp-content/uploads/2020/05/player_w2.gif)
 
 Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataformas-en-java-7-destruir-las-cajas/)
 
