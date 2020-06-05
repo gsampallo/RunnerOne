@@ -65,3 +65,18 @@ Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataforma
 
 [![video1](https://img.youtube.com/vi/OWklYWcxeEc/0.jpg)](https://youtu.be/OWklYWcxeEc)
 
+#### Revisando el código
+
+Es momento de revisar un poco el código que tenemos escrito y reordenar un poco, hacerlo un poco más «elegante».
+
+Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataforma-en-java-8-un-poco-de-optimizacion/)
+
+[![video1](https://img.youtube.com/vi/d2Shvd3YnkA/0.jpg)](https://youtu.be/d2Shvd3YnkA)
+
+#### Creditos
+
+Cuando definimos las frutas que puede recolectar nuestro personaje, nos quedo pendiente el tema del puntaje. Al recoger cada fruta se debe sumar un puntaje, el cual debe mostrarse en algún lugar de la pantalla.
+
+Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataformas-en-java-9-puntaje/)
+
+[![video1](https://img.youtube.com/vi/AU5sSylucUE/0.jpg)](https://youtu.be/AU5sSylucUE)
