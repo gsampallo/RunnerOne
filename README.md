@@ -80,3 +80,12 @@ Cuando definimos las frutas que puede recolectar nuestro personaje, nos quedo pe
 Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataformas-en-java-9-puntaje/)
 
 [![video1](https://img.youtube.com/vi/AU5sSylucUE/0.jpg)](https://youtu.be/AU5sSylucUE)
+
+#### Trampas
+
+Cuando definimos las frutas que puede recolectar nuestro personaje, nos quedo pendiente el tema del puntaje. Al recoger cada fruta se debe sumar un puntaje, el cual debe mostrarse en algún lugar de la pantalla.
+
+Articulo del [blog](http://www.gsampallo.com/blog/2020/05/26/juego-de-plataformas-en-java-10-trampas/)
+
+[![video1](https://img.youtube.com/vi/Rf0pmJI_LeA/0.jpg)](https://youtu.be/Rf0pmJI_LeA)
+
