@@ -2,7 +2,7 @@
 
 Un juego de plataformas en Java.
 
-![RunnerOne](https://www.gsampallo.com/wp-content/uploads/2020/05/platform-game.jpg)
+![RunnerOne](https://www.gsampallo.com/wp-content/uploads/2020/05/image-24.png)
 
 Aquí van a encontrar una serie de paso a paso con el desarrollo desde cero hasta completar un sencillo juego de plataformas. La idea es ver que tan lejos podemos llegar sin utilizar herramientas o librerías extras.
 
